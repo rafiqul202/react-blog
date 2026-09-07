@@ -27,7 +27,7 @@ const SinglePostPage = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error?.message}</div>;
 
-  console.log("single post data", post);
+  // console.log("single post data", post);
   return (
     <div className="flex flex-col gap-8">
       {/* details */}
@@ -38,7 +38,7 @@ const SinglePostPage = () => {
           <div className="flex items-center gap-3 text-sm">
             <span className="text-gray-500">Writer By</span>
 
-            <Link className="text-blue-500">{post.user?.username}</Link>
+            <Link className="text-blue-500">{post?.user?.username}</Link>
             <span className="text-gray-500">on</span>
             <Link className="text-blue-500">{post?.category}</Link>
             <span className="text-gray-500 text-xs">

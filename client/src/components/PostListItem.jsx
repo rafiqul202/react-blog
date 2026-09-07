@@ -1,12 +1,12 @@
-import React from "react";
 import ImageKit from "./ImageKit";
 import { Link } from "react-router-dom";
 import VideoKit from "./VideoKit";
 import { format } from "timeago.js";
 
 const PostListItem = ({ post }) => {
+  console.log("postList Items",post)
   return (
-    <div className="flex flex-col items-start xl:flex-row gap-8 shadow-lg p-5 hover:scale-105 duration-200 hover:transition-transform">
+    <div className="flex flex-col items-start xl:flex-row gap-8 shadow-lg p-5">
       {/* image */}
       <div className="md:hidden xl:block xl:w-1/3">
         {post?.img && (
@@ -34,7 +34,7 @@ const PostListItem = ({ post }) => {
         </Link>
         <div className="flex items-center gap-2 text-gray-400 text-sm">
           <span>Written by</span>
-          <Link className="text-blue-500">{post?.user?.username}</Link>
+          <Link to={`/posts?author=${post.user.username}`} className="text-blue-500">{post?.user?.username}</Link>
           <span>On</span>
           <Link className="text-blue-500">{post?.category}</Link>
           <span>{format(post?.createAt)}</span>

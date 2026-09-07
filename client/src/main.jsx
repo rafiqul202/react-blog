@@ -10,12 +10,9 @@ import LoginPage from "./routes/LoginPage.jsx";
 import RegisterPage from "./routes/RegisterPage.jsx";
 import Mainlayout from "./layout/Mainlayout.jsx";
 import { ClerkProvider } from "@clerk/react";
- import { Bounce, ToastContainer } from "react-toastify";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-const queryClient = new QueryClient(); 
+import { Bounce, ToastContainer } from "react-toastify";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient();
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
@@ -31,7 +28,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/post",
+        path: "/posts",
         element: <PostListPage />,
       },
       {
@@ -57,11 +54,16 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
-      <RouterProvider router={router} />
-    </ClerkProvider>
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+        <RouterProvider router={router} />
+      </ClerkProvider>
     </QueryClientProvider>
-    <ToastContainer position="top-right" pauseOnHover autoClose={4000 } theme="light" transition={Bounce} />
+    <ToastContainer
+      position="top-right"
+      pauseOnHover
+      autoClose={4000}
+      theme="light"
+      transition={Bounce}
+    />
   </StrictMode>,
 );
